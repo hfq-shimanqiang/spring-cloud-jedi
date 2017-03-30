@@ -1,0 +1,21 @@
+server:
+  port: 18080
+
+spring:
+  profiles:
+    active: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/hfq-shimanqiang/hello-hello.git
+          username:
+          password:
+          #basedir: cloud-config-repo
+          #searchPaths: cloud-config-repo
+
+health:
+  config:
+    enabled: true
+    time-to-live: 0
+

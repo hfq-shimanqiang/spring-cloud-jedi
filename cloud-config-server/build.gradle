@@ -1,0 +1,20 @@
+// jar包的名字
+//archivesBaseName = 'cloud-config-server'
+
+//定义版本号
+ext {
+    springCloudCconfigServerVersion = '1.2.3.RELEASE'
+}
+
+jar {
+    baseName = 'huifenqi-payment-cloud-config-server'
+    version = '1.1.0.20170329'
+}
+
+dependencies {
+    // 依赖 core 模块
+    //compile project(":core")
+    //compile('org.springframework.cloud:spring-cloud-config-server:1.2.3.RELEASE')
+    compile("org.springframework.cloud:spring-cloud-config-server:${springCloudCconfigServerVersion}")
+}
+

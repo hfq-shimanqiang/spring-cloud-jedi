@@ -1,0 +1,79 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+}
+
+// 所有子项目的通用配置
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    //apply plugin: 'spring-boot'
+
+    //Gradle 和 idea 集成时如何不自动下载依赖源码和javadoc
+    idea {
+        module {
+            downloadJavadoc = false
+            downloadSources = true
+        }
+    }
+
+    version = 'v1.0'
+
+    // JVM 版本号要求
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-snapshot" }
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: '*.jar')
+        compile(
+                "org.slf4j:slf4j-api:1.7.21",
+                "com.google.code.gson:gson:2.8.0",
+                "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+                //actuator 暴露了/env 和 /refresh 服务端点等
+                "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}",
+                "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        )
+
+        testCompile(
+                //'junit:junit:4.12',
+                "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        )
+    }
+    dependencyManagement {
+        imports {
+            //mavenBom "org.springframework.cloud:spring-cloud-dependencies:Dalston.RC1"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR6"
+        }
+    }
+}
+
+

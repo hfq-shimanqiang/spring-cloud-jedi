@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:18080
+      label: master
+      #http://localhost:18080/foo/test 的结果。对应下面属性：name 、profile
+      name: foo
+      profile: test
