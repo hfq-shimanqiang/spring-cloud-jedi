@@ -1,0 +1,17 @@
+server:
+  port: 2221
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:18111/eureka/
+
+spring:
+  application:
+    name: service-a
+  #日志追踪配置
+  zipkin:
+    enabled: true
+    base-url: http://localhost:8089
+

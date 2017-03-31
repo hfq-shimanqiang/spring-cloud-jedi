@@ -6,3 +6,8 @@ spring:
       #http://localhost:18080/foo/test 的结果。对应下面属性：name 、profile
       name: foo
       profile: test
+
+      #将配置也注册到注册中心需要的配置，enabled改为true
+      discovery:
+        enabled: false
+        service-id: config-server

@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: web-client-a
+  #日志追踪配置
+  zipkin:
+    base-url: http://localhost:8089
+    enabled: true
+  sleuth:
+    sampler:
+      #配置为百分之五十输出:如果配置为1，则：[web-client-a,e5dcdc09ea64f2b9,e5dcdc09ea64f2b9,true] 每次都是true,
+      #也就是每次都post到 zipkin中
+      percentage: 0.1
+server:
+  port: 3331
+
+eureka:
+  client:
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://localhost:18111/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 # 请求超时时长，缺省为1000
+  threadpool:
+    default:
+      coreSize: 20 # 请求最大线程数，缺省为10
+
+

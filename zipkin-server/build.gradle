@@ -1,0 +1,10 @@
+version '0.0.1'
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    compile('io.zipkin.java:zipkin-server')
+    runtime('io.zipkin.java:zipkin-autoconfigure-ui')
+    
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
