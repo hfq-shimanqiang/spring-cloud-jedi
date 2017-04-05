@@ -3,6 +3,7 @@ buildscript {
         springBootVersion = '1.5.2.RELEASE'
     }
     repositories {
+        maven { url "http://47.93.114.117:8090/nexus/content/groups/public/" }
         mavenCentral()
     }
     dependencies {
@@ -42,6 +43,11 @@ subprojects {
 
 
     repositories {
+        maven { url "http://47.93.114.117:8090/nexus/content/groups/public/" }
+        maven {
+            name 'aliyun maven'
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
         jcenter()
         mavenCentral()
         maven { url "https://repo.spring.io/plugins-snapshot" }

@@ -3,7 +3,7 @@
 
 //定义版本号
 ext {
-    springCloudCconfigClientVersion = '1.2.3.RELEASE'
+    springCloudConfigClientVersion = '1.2.3.RELEASE'
 }
 
 jar {
@@ -15,7 +15,7 @@ dependencies {
     // 依赖 core 模块
     //compile project(":core")
     //compile("org.springframework.boot:spring-boot-starter-actuator:1.5.2.RELEASE")
-    compile("org.springframework.cloud:spring-cloud-config-client:${springCloudCconfigClientVersion}")
+    compile("org.springframework.cloud:spring-cloud-config-client:${springCloudConfigClientVersion}")
     //compile("org.springframework.cloud:spring-cloud-context:1.1.8.RELEASE")
 }
 
