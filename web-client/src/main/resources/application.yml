@@ -17,7 +17,7 @@ eureka:
   client:
     register-with-eureka: false
     serviceUrl:
-      defaultZone: http://localhost:18111/eureka/
+      defaultZone: http://localhost:18110/eureka/
 
 hystrix:
   command:
